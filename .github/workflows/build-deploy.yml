@@ -20,10 +20,13 @@ jobs:
         uses: actions/setup-node@v1
       - run: npm install
       - run: npm run build # runs `next build`
+        env:
+          NEXT_PUBLIC_BASE_PATH: /blog-nextjs
       - run: npm run export # runs `next export`
         env:
           CI: true
           DEPLOY_TARGET: gh-pages
+          NEXT_PUBLIC_BASE_PATH: /blog-nextjs
       - run: touch ./out/.nojekyll
 
       - name: Deploy
